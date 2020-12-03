@@ -1,37 +1,4 @@
-<?php
-include "coneccion.php";
-$alert = '';
-if(!empty($_POST)){
 
-    if(empty($_POST['matricula']) || empty($_POST['Nombre']) || empty($_POST['Telefono']) || empty($_POST['Carrera'])){
-
-         $alert = '<p class="msg_error">Todos los campos son obligatorios.</p>';
-         
-    }else{
-
-     
-     $matricula = $_POST['matricula'];
-     $Nombre = $_POST['Nombre'];
-     $Telefono   = $_POST['Telefono'];
-     $Carrera    = $_POST['Carrera'];
-
-$query = mysqli_query($mysqli,"SELECT * FROM alumno WHERE Matricula_A ='$matricula' OR Nombre_A = '$Nombre'");
- $result = mysqli_fetch_array($query);
-
-  if($result > 0){
- $alert = '<p class="msg_error">El alumno ya existen.</p>';
-   }else{
-       $query_insert = mysqli_query($mysqli, "INSERT INTO alumno (Matricula_A, Nombre_A, Telefono_A, Carrera) VALUES('$matricula','$Nombre', '$Telefono', '$Carrera')");
-
-     if($query_insert){
-  $alert = '<p class="msg_error">El usuario a sido creado.</p>';
-         }else{
-          $alert = '<p class="msg_error">ERROR al crear el usuario.</p>';
-          }
-      }
-}
-} 
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -167,21 +134,22 @@ $query = mysqli_query($mysqli,"SELECT * FROM alumno WHERE Matricula_A ='$matricu
 }
     </style>
     <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="pizza.php">Xtrema</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="listpizzas.php">Lista de pizzas</a></li>
-
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="pedidos.php">Pedidos</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="compras.php">Compras</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+          <div class="container">
+              <a class="navbar-brand js-scroll-trigger" href="index.html">Hilo Frio</a>
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="pizzas.html">Pizzas</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Promociones.html">Promociones</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Bebidas.html">Bebidas</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="pedidos.html">Pedidos</a></li>
+                      <li class="nav-item"><a class="nav-link js-scroll-trigger" href="InicioSesion.html">Iniciar Sesión</a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
         <!-- Masthead-->
         <div class="container-fluid">
             <div class="row no-gutter">
